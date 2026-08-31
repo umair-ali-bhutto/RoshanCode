@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RoshanCode — HTML/CSS/JS Playground</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="app">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true"></span>
+      <span class="brand-name">RoshanCode</span>
+    </div>
+
+    <div class="topbar-center">
+      <button class="run-btn" id="runBtn" title="Run (Ctrl/Cmd + Enter)">
+        <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 1.5L10 6L2 10.5V1.5Z" fill="currentColor"/></svg>
+        Run
+      </button>
+      <label class="auto-toggle">
+        <input type="checkbox" id="autoRun" checked>
+        <span>Auto-run</span>
+      </label>
+    </div>
+
+    <div class="topbar-actions">
+      <div class="device-switch" id="deviceSwitch">
+        <button class="device-btn is-active" data-width="100%" title="Desktop">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="1.5" y="2.5" width="13" height="8.5" rx="1" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 13.5H10.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+        </button>
+        <button class="device-btn" data-width="768px" title="Tablet">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="3.5" y="1.5" width="9" height="13" rx="1.2" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="12.2" r="0.6" fill="currentColor"/></svg>
+        </button>
+        <button class="device-btn" data-width="375px" title="Mobile">
+          <svg width="15" height="15" viewBox="0 0 16 16" fill="none"><rect x="5" y="1.5" width="6" height="13" rx="1" stroke="currentColor" stroke-width="1.3"/><circle cx="8" cy="12.1" r="0.55" fill="currentColor"/></svg>
+        </button>
+      </div>
+
+      <button class="icon-btn" id="saveBtn" title="Save project">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M3 2.5h8l2.5 2.5v8.5a1 1 0 0 1-1 1h-9.5a1 1 0 0 1-1-1v-10a1 1 0 0 1 1-1Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/><path d="M5.5 2.5v3.2h5V2.5" stroke="currentColor" stroke-width="1.3"/><path d="M5 9.5h6" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn" id="projectsBtn" title="My projects">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M1.5 4.2a1 1 0 0 1 1-1h3l1.2 1.6h6.8a1 1 0 0 1 1 1v6.9a1 1 0 0 1-1 1h-11a1 1 0 0 1-1-1V4.2Z" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/></svg>
+      </button>
+      <button class="icon-btn" id="downloadBtn" title="Download as .html">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><path d="M8 2v7.5M8 9.5 5 6.7M8 9.5l3-2.8" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/><path d="M2.5 12v1.3a1 1 0 0 0 1 1h9a1 1 0 0 0 1-1V12" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/></svg>
+      </button>
+      <button class="icon-btn" id="shareBtn" title="Copy share link">
+        <svg width="16" height="16" viewBox="0 0 16 16" fill="none"><circle cx="12" cy="3.5" r="1.7" stroke="currentColor" stroke-width="1.3"/><circle cx="4" cy="8" r="1.7" stroke="currentColor" stroke-width="1.3"/><circle cx="12" cy="12.5" r="1.7" stroke="currentColor" stroke-width="1.3"/><path d="M5.5 7.1 10.5 4.4M5.5 8.9l5 2.7" stroke="currentColor" stroke-width="1.3"/></svg>
+      </button>
+    </div>
+  </header>
+
+  <!-- Main workspace -->
+  <main class="workspace" id="workspace">
+
+    <section class="editors" id="editorsPane" style="width: 50%;">
+      <div class="tabbar">
+        <button class="tab is-active" data-lang="html">
+          <span class="dot dot-html"></span>HTML
+        </button>
+        <button class="tab" data-lang="css">
+          <span class="dot dot-css"></span>CSS
+        </button>
+        <button class="tab" data-lang="js">
+          <span class="dot dot-js"></span>JavaScript
+        </button>
+        <div class="tabbar-spacer"></div>
+        <button class="reset-btn" id="resetBtn" title="Reset to starter template">Reset</button>
+      </div>
+
+      <div class="editor-panes">
+        <div class="editor-pane is-active" id="pane-html"></div>
+        <div class="editor-pane" id="pane-css"></div>
+        <div class="editor-pane" id="pane-js"></div>
+      </div>
+    </section>
+
+    <div class="divider" id="divider" role="separator" aria-orientation="vertical" aria-label="Resize editor and preview panels" tabindex="0"></div>
+
+    <section class="preview-col" id="previewCol">
+      <div class="preview-toolbar">
+        <span class="preview-label">Preview</span>
+        <span class="status-dot" id="statusDot"></span>
+        <span class="status-text" id="statusText">ready</span>
+        <div class="tabbar-spacer"></div>
+        <button class="reset-btn" id="clearConsoleBtn" title="Clear console">Clear console</button>
+        <button class="reset-btn" id="fullscreenBtn" title="Open preview fullscreen">Fullscreen</button>
+      </div>
+      <div class="preview-frame-wrap">
+        <div class="preview-shell" id="previewShell">
+          <iframe id="previewFrame" title="Live preview" sandbox="allow-scripts allow-modals allow-forms allow-popups"></iframe>
+        </div>
+      </div>
+      <div class="console-panel" id="consolePanel">
+        <div class="console-log" id="consoleLog"></div>
+      </div>
+    </section>
+
+  </main>
+</div>
+
+<!-- Projects drawer -->
+<div class="overlay" id="overlay"></div>
+<aside class="drawer" id="projectsDrawer">
+  <div class="drawer-head">
+    <h2>My projects</h2>
+    <button class="icon-btn" id="closeDrawer">✕</button>
+  </div>
+  <div class="drawer-body">
+    <button class="new-project-btn" id="newProjectBtn">+ New project</button>
+    <div class="project-list" id="projectList"></div>
+  </div>
+</aside>
+
+<!-- Save-as dialog -->
+<div class="modal-overlay" id="saveModalOverlay">
+  <div class="modal">
+    <h3 id="saveModalTitle">Save project</h3>
+    <input type="text" id="saveNameInput" placeholder="Project name" maxlength="40">
+    <div class="modal-actions">
+      <button class="btn-ghost" id="saveCancelBtn">Cancel</button>
+      <button class="btn-solid" id="saveConfirmBtn">Save</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script type="module" src="script.js"></script>
+</body>
+</html>

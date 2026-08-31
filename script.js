@@ -15,10 +15,13 @@ import { indentWithTab } from "https://esm.sh/@codemirror/commands@6.11.0?deps=@
    Starter template
    ============================================================ */
 const STARTER = {
-  html: `<h1>Hello, world</h1>
+  html: `<!-- STARTER TEMPLATE START -->
+<h1>Hello, world</h1>
 <p>Edit the HTML, CSS or JavaScript on the left — the preview updates as you type.</p>
-<button id="pingBtn">Click me</button>`,
-  css: `body {
+<button id="pingBtn">Click me</button>
+<!-- STARTER TEMPLATE END -->`,
+  css: `/*STARTER TEMPLATE START*/
+body {
   font-family: system-ui, sans-serif;
   padding: 2.5rem;
   color: #1b1e29;
@@ -35,10 +38,13 @@ button {
   background: #7ce7b8;
   cursor: pointer;
   font-weight: 600;
-}`,
-  js: `document.getElementById('pingBtn').addEventListener('click', () => {
+}
+/*STARTER TEMPLATE END*/`,
+  js: `//STARTER TEMPLATE START
+document.getElementById('pingBtn').addEventListener('click', () => {
   console.log('Button clicked!');
-});`
+});
+//STARTER TEMPLATE END`
 };
 
 const DRAFT_KEY = "roshancode-draft";
@@ -158,12 +164,20 @@ function buildDocument({ html, css, js }) {
 <html>
 <head>
 <meta charset="UTF-8">
-<style>${css}</style>
+<style>
+${css}
+</style>
 </head>
 <body>
 ${html}
-<script>${CONSOLE_BRIDGE}<\/script>
-<script>${js}<\/script>
+
+<script>
+${CONSOLE_BRIDGE}
+<\/script>
+
+<script>
+${js}
+<\/script>
 </body>
 </html>`;
 }
@@ -203,7 +217,10 @@ const runBtn = document.getElementById("runBtn");
 function runCode() {
   const code = getCode();
   frame.srcdoc = buildDocument(code);
-  setStatus("live");
+  // "live" means the preview is continuously syncing with your typing.
+  // If auto-run is off, a manual Run still refreshes the preview, but the
+  // status should keep saying auto-run is off rather than claiming "live".
+  setStatus(autoRunCheckbox.checked ? "live" : "paused");
   runBtn.classList.remove("is-running");
   void runBtn.offsetWidth; // restart animation
   runBtn.classList.add("is-running");
@@ -247,9 +264,9 @@ document.addEventListener("keydown", e => {
 // and resume a live preview the moment it's switched back on.
 autoRunCheckbox.addEventListener("change", () => {
   if (autoRunCheckbox.checked) {
-    runCode();
+    runCode(); // resume: refresh preview and flip the light back to "live"
   } else {
-    setStatus("paused");
+    setStatus("paused"); // no run happens, just flips the light off
   }
 });
 
@@ -354,7 +371,7 @@ function showToast(msg) {
    ============================================================ */
 function sanitizeFilename(name) {
   const cleaned = name.trim().replace(/[^a-z0-9]+/gi, "-").replace(/^-+|-+$/g, "");
-  return cleaned || "RoshanCode";
+  return cleaned || "New-Project";
 }
 
 function formatTimestamp() {
@@ -374,8 +391,8 @@ document.getElementById("downloadBtn").addEventListener("click", () => {
   a.href = url;
 
   const projects = getProjects();
-  const baseName = (currentProjectId && projects[currentProjectId]) ? projects[currentProjectId].name : "RoshanCode";
-  a.download = `${sanitizeFilename(baseName)}_${formatTimestamp()}.html`;
+  const baseName = (currentProjectId && projects[currentProjectId]) ? projects[currentProjectId].name : "New-Project";
+  a.download = `RoshanCode_${sanitizeFilename(baseName)}_${formatTimestamp()}.html`;
 
   a.click();
   URL.revokeObjectURL(url);

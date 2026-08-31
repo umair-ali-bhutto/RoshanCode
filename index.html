@@ -7,6 +7,39 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<link rel="icon" href="https://umair-ali-bhutto.github.io/assets/CodePenIcon/logo.png">
+
+<!-- ==================== Meta Information ==================== -->
+<meta name="author" content="Umair Ali Bhutto">
+<meta name="description" content="Bring your code to light. A zero-dependency, futuristic HTML/CSS/JS playground with live auto-rendering, local project saving, and shareable links—no build step required"/>
+<meta name="publisher" content="Umair Ali Bhutto">
+
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<meta http-equiv="Cache-Control" content="no-cache">
+<meta http-equiv="Pragma" content="no-cache">
+
+<!-- ==================== Open Graph (Facebook, WhatsApp, LinkedIn) ==================== -->
+<meta property="og:title" content="RoshanCode – Bring your code to light.">
+<meta property="og:description" content="A zero-dependency, futuristic HTML/CSS/JS playground with live auto-rendering.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="RoshanCode">
+<meta property="og:image" content="https://umair-ali-bhutto.github.io/assets/CodePenIcon/logo.png">
+<meta property="og:url" th:content="https://umair-ali-bhutto.github.io/roshancode/">
+
+<!-- ==================== Twitter / X ==================== -->
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="RoshanCode – Bring your code to light.">
+<meta name="twitter:description" content="A zero-dependency, futuristic HTML/CSS/JS playground with live auto-rendering.">
+<meta name="twitter:image" content="https://umair-ali-bhutto.github.io/assets/CodePenIcon/logo.png">
+
+<meta name="theme-color" content="#ffffff">
+<meta name="application-name" content="RoshanCode" />
+
+<meta name="msapplication-TileColor" content="#ffffff" />
+<meta name="msapplication-TileImage" content="https://umair-ali-bhutto.github.io/assets/CodePenIcon/logo.png" />
+
+<meta name="keywords" content="umair-ali-bhutto, umair ali bhutto, umair, ali, bhutto, RoshanCode, roshancode, HTML, CSS, JavaScript, Web Development, Umair Ali Bhutto, Frontend Development, JavaScript Animations, CSS3, HTML5, Responsive Design, Web Design Inspiration, Code Editing, code preview, User Interface, UI Design, UX Design, Design Patterns, Developer Tools, Open Source, Github, github, GitHub Pages, code snippets, interactive web design, modern web development, coding skills, front-end tutorials, web projects, web animations, CSS grid, flexbox, JavaScript libraries, HTML5 canvas, DOM manipulation, web effects, animations, beginner projects, web developer resources, showcase, design showcase, JavaScript coding practices, CSS techniques, web trends, coding exercises, learn to code, web engineering, modern coding practices, tech community, personal project, software engineering, front-end engineering">
+
 </head>
 <body>
 
@@ -15,10 +48,47 @@
   <!-- Top bar -->
   <header class="topbar">
     <div class="brand">
-      <span class="brand-mark" aria-hidden="true"></span>
-      <span class="brand-name">RoshanCode</span>
+      <svg class="brand-mark" width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="RoshanCode Logo">
+        <defs>
+          <!-- Premium Cyan to Electric Lime Glow Gradient -->
+          <linearGradient id="roshanGlow" x1="2" y1="2" x2="30" y2="30" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#00F2FE" />
+            <stop offset="50%" stop-color="#4FACFE" />
+            <stop offset="100%" stop-color="#7CE7B8" />
+          </linearGradient>
+    
+          <!-- Soft Backlight Aura -->
+          <filter id="aura" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2.5" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+          </filter>
+        </defs>
+    
+        <!-- Glowing Hexagonal Outer Shield -->
+        <rect x="2" y="2" width="28" height="28" rx="9" fill="url(#roshanGlow)" opacity="0.15" />
+        <rect x="2" y="2" width="28" height="28" rx="9" stroke="url(#roshanGlow)" stroke-width="1.5" />
+    
+        <!-- Left Code Bracket (<) -->
+        <path d="M11 11L7 16L11 21" stroke="url(#roshanGlow)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#aura)"/>
+    
+        <!-- Right Code Bracket (>) -->
+        <path d="M21 11L25 16L21 21" stroke="url(#roshanGlow)" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" filter="url(#aura)"/>
+    
+        <!-- Center Light Spark / Beam (Roshan Concept) -->
+        <path d="M16 7V25" stroke="#FFFFFF" stroke-width="2" stroke-linecap="round" />
+        <polygon points="16,10 18,16 16,22 14,16" fill="url(#roshanGlow)" />
+        <circle cx="16" cy="16" r="1.5" fill="#FFFFFF" />
+      </svg>
+    
+      <span class="brand-name">
+        Roshan<span style="color: #7CE7B8;">Code</span>
+      </span>
     </div>
 
+
+
+
+    
     <div class="topbar-center">
       <button class="run-btn" id="runBtn" title="Run (Ctrl/Cmd + Enter)">
         <svg width="12" height="12" viewBox="0 0 12 12" fill="none"><path d="M2 1.5L10 6L2 10.5V1.5Z" fill="currentColor"/></svg>
@@ -73,7 +143,7 @@
           <span class="dot dot-js"></span>JavaScript
         </button>
         <div class="tabbar-spacer"></div>
-        <button class="reset-btn" id="resetBtn" title="Reset to starter template">Reset</button>
+        <button class="reset-btn" id="resetBtn" title="Reset HTML, CSS and JS back to the starter template">Reset to Template</button>
       </div>
 
       <div class="editor-panes">
